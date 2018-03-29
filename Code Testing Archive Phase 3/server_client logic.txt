@@ -1,0 +1,28 @@
+Tasks:
+-------------------------------------
+Server:
+	1. Prompt user to type in library directory filepath
+		a. save the directory filepath to a variable
+	2. Prompt the user to select a protocol, 1=ABP 2=SRP
+		a. assign the 1 or 2 value to a variable
+	3. Set up receiver, array of connections
+	4. Receive a request
+		a. Read the data. If it has the filename, create a connection
+		   thread with the address and port, and initialize a sender.
+	5. Process request:
+		a. if the data is a textfile name, open the file and put
+		   its contents in a variable. send the data via the sender.
+		   then clear the textfile name.
+		b. otherwise, do nothing
+#note: add send closing message packet to ABProtocol Sender
+
+Client:
+	1. Prompt the user to select a protocol, 1=ABP 2=SRP
+		a. assign the 1 or 2 value to a variable
+	2. Set up receiver and initialize sender
+	3. Prompt the user to type in a textfile name
+		a. save it to a variable and send it to the server
+	4. Process receive data:
+		a. if the string is the closing message, write the data to
+		   a file
+		b. otw, add the data to the string of data
